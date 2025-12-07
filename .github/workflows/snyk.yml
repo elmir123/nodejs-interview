@@ -18,7 +18,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@4
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
@@ -49,7 +49,7 @@ jobs:
           if [ -f result.html ]; then cp -v result.html downloads/; else echo "No result.html produced"; fi
 
       - name: Upload Snyk results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: snyk-results
           path: downloads
