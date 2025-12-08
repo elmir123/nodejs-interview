@@ -26,20 +26,20 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Setup Snyk (authenticate)
+      - name: Install Snyk
+        run: npm install -g snyk
+
+      - name: Authenticate Snyk
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-        run: npx snyk auth "$SNYK_TOKEN"
+        run: snyk auth
 
       - name: Snyk Test
-        run: npx snyk test
-        continue-on-error: false
+        run: snyk test
 
       - name: Snyk Monitor
         if: always()
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-        run: npx snyk monitor
+        run: snyk monitor
 
       # - name: Generate HTML Report
       #   run: |
