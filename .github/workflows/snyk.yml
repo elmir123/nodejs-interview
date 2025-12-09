@@ -40,16 +40,3 @@ jobs:
       - name: Snyk Monitor
         if: always()
         run: snyk monitor
-
-      # - name: Generate HTML Report
-      #   run: |
-      #     # convert snyk json output to HTML using npx (no global installs)
-      #     npx snyk test --json | npx snyk-to-html -o result.html
-      #     mkdir -p downloads
-      #     if [ -f result.html ]; then cp -v result.html downloads/; else echo "No result.html produced"; fi
-
-      # - name: Upload Snyk results
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: snyk-results
-      #     path: downloads
